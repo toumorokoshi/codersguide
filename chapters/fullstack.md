@@ -53,14 +53,46 @@ running average and detect large fluctuations, rather than require a
 100% pass rate. This is much easier to achieve on smaller tests such as
 UI, integration, and unit tests.
 
-## Fullstack tests are slow
-
-In terms of time
-
 ## Fullstack tests are the least valuable test
 
-In the section about cost, we talk about what increases and decreases the value of tests:
+In the section about cost, we talk about what increases and decreases
+the value of tests. If you look at the value, fullstack tests are the
+least valuable of all the tests.
 
-* the amount of functionality covered increases the value of a test, because
-* the amount of maintenance required
-* the amount
+Fullstack tests are slow, due to requiring setup and teardown of a
+larger amount of state, and the number of steps required to fully perform
+the test tend to be higher.
+
+Fullstack tests are inconsistent, due to the number of components that
+could be failing, multiplying the number of failures.
+
+Fullstack tests are expensive to maintain, due to the constantly
+changing component behaviour, and the upkeep of the components of the
+product.
+
+Fullstack tests require utilization of multiple resources, due to the way it must
+propagate back and forth throughout the components.
+
+It it is true that fullstack tests provide a lot of coverage. However,
+when weighed against the increased expenses to execute and maintain
+the test, investment in better testing of the isolated components is a
+better use of people power.
+
+## Fullstack tests are necessary
+
+All of the above doesn't change the fact that fullstack tests do test
+a vital part of the product that is not tested by the isolated
+tests. Fullstack tests test the integration of all the components
+together. Thus, choosing to omit fullstack tests entirely will lead
+to a dangerous gap in coverage.
+
+## But keep the count small
+
+Ultimately, the actual area of coverage of a fullstack that could not
+be potentially covered by a more isolated test is very small. As such,
+it's best to keep the number of fullstack tests small.
+
+These are expandend on in the 'patterns' part of the book, but some
+good guidelines are:
+
+* don't test variations in component behaviour in the fullstack tests
