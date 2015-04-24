@@ -52,3 +52,15 @@ percentage of the time. In situations like these, it's best to take a
 running average and detect large fluctuations, rather than require a
 100% pass rate. This is much easier to achieve on smaller tests such as
 UI, integration, and unit tests.
+
+## Fullstack tests are slow
+
+In terms of time
+
+## Fullstack tests are the least valuable test
+
+In the section about cost, we talk about what increases and decreases the value of tests:
+
+* the amount of functionality covered increases the value of a test, because
+* the amount of maintenance required
+* the amount
