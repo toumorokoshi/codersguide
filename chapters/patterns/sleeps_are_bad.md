@@ -26,11 +26,39 @@ This leads to a choice made about the wait:
 * to choose a more reasonable amount of time, and accept that the test
   will be inconsistent.
 
-Neither option sound very attractive.
+Neither option sounds very attractive.
 
-## An alternative: use a status call or callback
+## An alternative: use a status call
 
 The main issue arises from the indeterminate amount of time an
 external resource takes to execute. In order for the test to act
 appropriately, it needs to be able to accurately determine when
 to continue.
+
+To help the test, the SUT should provide some way to query the state
+of a particular request. This will allow the test to determine the
+status of an action, and wait until the result to verify is available.
+
+For example, consider a service that reads entries from an incoming queue
+and processes the output. One solution to testing this could be:
+
+* add an entry to the queue
+* sleep for X time
+* validate the result
+
+This could be converted to a more robust methodolgy:
+
+* add an entry to the queue
+* query the SUT for whether the entry is completed or not. block until
+  validated.
+* validate the result
+
+## An Example
+
+Let's say we have SUT that processes spreadsheets, and adds them into
+a database. To interact with it, we have a webservice that provides:
+
+* /process : an endpoint to POST a .csv file, which adds the file to the queue
+
+To test that the process works as desired this would currently require
+sleeps, because the
