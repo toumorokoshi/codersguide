@@ -7,7 +7,8 @@ quickly than slower tests. The slower a test is, the more likely it is
 to run in a process that is farther removed from a developer's
 standard development process.
 
-One can also execute shorter tests far more rapidly that larger tests. For example, let's say that, on average:
+One can also execute shorter tests far more rapidly that larger
+tests. For example, let's say that, on average:
 
 * a unit test takes 1ms
 * an integration test takes 100ms

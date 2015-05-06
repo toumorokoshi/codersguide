@@ -1,4 +1,0 @@
-# Pattern: Isolating UI
-
-
-## Example

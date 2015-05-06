@@ -34,5 +34,8 @@ Inconsistent UI tests tend to have the same symptoms as bad unit tests:
 making multiple assumptions on the existing state, and following complex workflows
 that require multiple steps.
 
-There are strong corollaries between UI tests and unit tests for a reason: because UI tests are another
-form of unit testing.
+There are strong corollaries between UI tests and unit tests for a
+reason: because UI tests are another form of unit testing.
+
+See the 'isolating UI' pattern for more information on how to keep UI
+tests small.
