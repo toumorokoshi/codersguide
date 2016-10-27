@@ -3,6 +3,7 @@
 This is a summary of my book.
 
 * [Forward](chapters/forward.md)
-* [The Cost of a Test](chapters/cost.md)
-* [UI Testing](chapters/ui.md)
-* [Fullstack Testing](chapters/fullstack.md)
+* [Testing](chapters/testing.md)
+* [Costing](chapters/costing.md)
+* [Design](chapters/design.md)
+* [Change](chapters/change.md)
