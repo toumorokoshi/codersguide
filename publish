@@ -1,4 +1,6 @@
 #/usr/bin/env bash
+book sm  # needs gitbook-summary
+gitbook build
 mv _book = /tmp/_book/
 git checkout gh-pages
 rm -r *
