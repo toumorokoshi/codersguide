@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1489361808289
+# Revision 1489362581503
 
 CACHE:
 notes.html
@@ -8,16 +8,6 @@ CONTRIBUTING.html
 optimization/cache_affinity.html
 optimization/linearization.html
 optimization/memoization.html
-sandbox/01_cost_of_testing.html
-sandbox/05_keep_tests_fast.html
-sandbox/cost.html
-sandbox/forward.html
-sandbox/fullstack.html
-sandbox/keep_tests_small.html
-sandbox/patterns/isolating_ui.html
-sandbox/patterns/sleeps_are_bad.html
-sandbox/risk.html
-sandbox/ui.html
 testing/testing.html
 uncategorized/debugging_applications.html
 uncategorized/debugging_performance.html
