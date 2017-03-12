@@ -7,3 +7,4 @@ rm -r *
 mv /tmp/_book/* .
 git commit -am "build $(date)"
 git push origin gh-pages
+git checkout master
