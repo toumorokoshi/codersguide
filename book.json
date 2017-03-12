@@ -1,3 +1,4 @@
 {
-    "generator": "site"
+    "generator": "site",
+    "author": "Yusuke Tsutsumi",
 }
