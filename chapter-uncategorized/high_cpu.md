@@ -1,1 +1,0 @@
-# My CPU is high
