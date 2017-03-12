@@ -2,6 +2,7 @@
 
 - instability estimate of full-stack tests.
 - testing pyramid
+  - cost of a test
 - testing feedback loop
 
 ## TLDR
