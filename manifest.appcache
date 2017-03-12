@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1489361585827
+# Revision 1489361808289
 
 CACHE:
 notes.html
@@ -13,8 +13,8 @@ sandbox/05_keep_tests_fast.html
 sandbox/cost.html
 sandbox/forward.html
 sandbox/fullstack.html
-sandbox/patterns/isolating_ui.html
 sandbox/keep_tests_small.html
+sandbox/patterns/isolating_ui.html
 sandbox/patterns/sleeps_are_bad.html
 sandbox/risk.html
 sandbox/ui.html

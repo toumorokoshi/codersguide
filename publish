@@ -1,10 +1,12 @@
 #/usr/bin/env bash
 book sm  # needs gitbook-summary
 gitbook build
-mv _book = /tmp/_book/
+rm -r /tmp/_book/
+mv _book /tmp/_book
 git checkout gh-pages
 rm -r *
 mv /tmp/_book/* .
+git add .
 git commit -am "build $(date)"
 git push origin gh-pages
 git checkout master
