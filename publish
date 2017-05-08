@@ -1,5 +1,6 @@
 #/usr/bin/env bash
 book sm  # needs gitbook-summary
+git commit -am "gitbook-summary update $(date)"
 gitbook build
 rm -r /tmp/_book/
 mv _book /tmp/_book

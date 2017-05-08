@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Cache Affinity · GitBook</title>
+        <title>Project Management · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -56,8 +56,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
-    
-    <link rel="next" href="how_to_optimize.html" />
     
     
 
@@ -114,9 +112,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../opinion/project_management.html">
+        <li class="chapter active" data-level="1.2.1" data-path="project_management.html">
             
-                <a href="../opinion/project_management.html">
+                <a href="project_management.html">
             
                     
                     Project Management
@@ -146,9 +144,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.1" data-path="cache_affinity.html">
+        <li class="chapter " data-level="1.3.1" data-path="../optimization/cache_affinity.html">
             
-                <a href="cache_affinity.html">
+                <a href="../optimization/cache_affinity.html">
             
                     
                     Cache Affinity
@@ -159,9 +157,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="how_to_optimize.html">
+        <li class="chapter " data-level="1.3.2" data-path="../optimization/how_to_optimize.html">
             
-                <a href="how_to_optimize.html">
+                <a href="../optimization/how_to_optimize.html">
             
                     
                     How To Optimize
@@ -172,9 +170,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="linearization.html">
+        <li class="chapter " data-level="1.3.3" data-path="../optimization/linearization.html">
             
-                <a href="linearization.html">
+                <a href="../optimization/linearization.html">
             
                     
                     Linearization
@@ -185,9 +183,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="memoization.html">
+        <li class="chapter " data-level="1.3.4" data-path="../optimization/memoization.html">
             
-                <a href="memoization.html">
+                <a href="../optimization/memoization.html">
             
                     
                     Memoization
@@ -576,7 +574,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Cache Affinity</a>
+        <a href=".." >Project Management</a>
     </h1>
 </div>
 
@@ -591,7 +589,54 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cache-affinity">Cache Affinity</h1>
+                                <h1 id="project-planning">Project Planning</h1>
+<p>My opinions on project planning.</p>
+<h2 id="short-and-sweet">Short and Sweet</h2>
+<ol>
+<li>define a project (the smaller the better)</li>
+<li>define how you measure success</li>
+<li>task the project in small, logical steps to execution</li>
+<li>execute those steps</li>
+</ol>
+<h2 id="in-detail">In Detail</h2>
+<h3 id="1-defining-a-project">1. Defining a Project</h3>
+<p>Only 1 / 3rd of customer facing projects have the desired effect. Many
+end up not moving any KPI toward a positive direction, and that means
+wasted work. Thus, if there&apos;s any part of the development process to
+optimize, it&apos;s choosing which projects to invest time in.</p>
+<p>The lean startup and agile suggest defining the absolute bare minimum
+necessary to prove value of larger investments.</p>
+<h3 id="defining-small-projects">Defining Small Projects</h3>
+<h4 id="strip-all-unnescessary-pieces">Strip all Unnescessary Pieces</h4>
+<p>If the value of the feature itself is not clear, it&apos;s best to shave
+off anything that is required for the feature to provide value.</p>
+<p>Examples include:</p>
+<ul>
+<li>aesthetics (color scheme / font)</li>
+<li>usability (button layout, etc)</li>
+<li>quality (heavy testing scenarios)</li>
+</ul>
+<p>That&apos;s not to say these parts aren&apos;t important: they just shouldn&apos;t be
+the first optimizations after value is established.</p>
+<h4 id="fake-it">Fake it</h4>
+<p>The whole product does need to be built to provide and validate value
+to users. When selling a new product, you can see if there&apos;s demand by
+buying and selling items off the shelf retail, and taking a loss.</p>
+<h2 id="2-measuring-success">2. Measuring Success</h2>
+<p>Success is measurable. If a project is being worked on that doesn&apos;t
+move KPIs that someone cares about, then there are more important
+projects to work on.</p>
+<p>A common argument is &quot;but my project doesn&apos;t affect the customer!&quot;. If
+that&apos;s the case, you may be looking at the wrong customer.</p>
+<p>E.g. for refactors on software, the customer is the future software
+developer: the KPI could be the throughput of that team.</p>
+<p>Maybe for an internal reporting tool, the customer is the project
+manager, and the KPI is their time spent searching for relevant data.</p>
+<h3 id="3-tasking-the-project">3. Tasking the Project</h3>
+<p>Tasking projects help in the same way that a six page paper proposal
+does: clarifying the approach.</p>
+<p>Each task in the project should be clear in purpose, and end result. Even small tasks should
+have some measure of success (although not as rigorous as the larger project KPI)</p>
 
                                 
                                 </section>
@@ -620,10 +665,6 @@
             
                 
                 
-                <a href="how_to_optimize.html" class="navigation navigation-next navigation-unique" aria-label="Next page: How To Optimize">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
             
         
     </div>
@@ -631,7 +672,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cache Affinity","level":"1.3.1","depth":2,"next":{"title":"How To Optimize","level":"1.3.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},"previous":{"title":"Optimization","level":"1.3","depth":1,"ref":"","articles":[{"title":"Cache Affinity","level":"1.3.1","depth":2,"path":"optimization/cache_affinity.md","ref":"optimization/cache_affinity.md","articles":[]},{"title":"How To Optimize","level":"1.3.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},{"title":"Linearization","level":"1.3.3","depth":2,"path":"optimization/linearization.md","ref":"optimization/linearization.md","articles":[]},{"title":"Memoization","level":"1.3.4","depth":2,"path":"optimization/memoization.md","ref":"optimization/memoization.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"optimization/cache_affinity.md","mtime":"2017-05-08T15:52:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-08T15:53:37.771Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Project Management","level":"1.2.1","depth":2,"next":{"title":"Optimization","level":"1.3","depth":1,"ref":"","articles":[{"title":"Cache Affinity","level":"1.3.1","depth":2,"path":"optimization/cache_affinity.md","ref":"optimization/cache_affinity.md","articles":[]},{"title":"How To Optimize","level":"1.3.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},{"title":"Linearization","level":"1.3.3","depth":2,"path":"optimization/linearization.md","ref":"optimization/linearization.md","articles":[]},{"title":"Memoization","level":"1.3.4","depth":2,"path":"optimization/memoization.md","ref":"optimization/memoization.md","articles":[]}]},"previous":{"title":"Opinion","level":"1.2","depth":1,"ref":"","articles":[{"title":"Project Management","level":"1.2.1","depth":2,"path":"opinion/project_management.md","ref":"opinion/project_management.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"opinion/project_management.md","mtime":"2017-05-08T15:52:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-08T15:53:37.771Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

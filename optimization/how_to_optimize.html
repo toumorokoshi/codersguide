@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Cache Affinity · GitBook</title>
+        <title>How To Optimize · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="how_to_optimize.html" />
+    <link rel="next" href="linearization.html" />
     
+    
+    <link rel="prev" href="cache_affinity.html" />
     
 
     </head>
@@ -146,7 +148,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.1" data-path="cache_affinity.html">
+        <li class="chapter " data-level="1.3.1" data-path="cache_affinity.html">
             
                 <a href="cache_affinity.html">
             
@@ -159,7 +161,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="how_to_optimize.html">
+        <li class="chapter active" data-level="1.3.2" data-path="how_to_optimize.html">
             
                 <a href="how_to_optimize.html">
             
@@ -576,7 +578,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Cache Affinity</a>
+        <a href=".." >How To Optimize</a>
     </h1>
 </div>
 
@@ -591,7 +593,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cache-affinity">Cache Affinity</h1>
+                                <h1 id="how-to-optimize">How To Optimize</h1>
+<h2 id="short-and-sweet">Short and Sweet</h2>
+<ol>
+<li>figure out the most expensive part of your system</li>
+<li>figure out how to make it more efficient</li>
+</ol>
+<h2 id="in-detail">In Detail</h2>
+<h3 id="1-figuring-out-the-most-expensive-part">1. figuring out the most expensive part</h3>
+<p>Optimization has one goal: making a process more efficient. The KPI
+is how efficient your process is:</p>
+<ul>
+<li>how fast it takes to execute a task</li>
+<li>how many tasks can be executed concurrently</li>
+</ul>
+<p>With that KPI in mind, the must successful optimization is the one
+that increases efficiency the most.</p>
+<!-- TODO: site -->
+<p>The Pareto Principle shows that 80% of the work is typically done by
+20% of the process. Thus, it&apos;s just as important to figure out where
+an optimization needs to happen, as the optmization itself.</p>
+<p>In software, profilers (Python: cProfile) can be used to benchmark
+code and see where the cost is.</p>
 
                                 
                                 </section>
@@ -619,8 +642,12 @@
 
             
                 
+                <a href="cache_affinity.html" class="navigation navigation-prev " aria-label="Previous page: Cache Affinity">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="how_to_optimize.html" class="navigation navigation-next navigation-unique" aria-label="Next page: How To Optimize">
+                
+                <a href="linearization.html" class="navigation navigation-next " aria-label="Next page: Linearization">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -631,7 +658,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cache Affinity","level":"1.3.1","depth":2,"next":{"title":"How To Optimize","level":"1.3.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},"previous":{"title":"Optimization","level":"1.3","depth":1,"ref":"","articles":[{"title":"Cache Affinity","level":"1.3.1","depth":2,"path":"optimization/cache_affinity.md","ref":"optimization/cache_affinity.md","articles":[]},{"title":"How To Optimize","level":"1.3.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},{"title":"Linearization","level":"1.3.3","depth":2,"path":"optimization/linearization.md","ref":"optimization/linearization.md","articles":[]},{"title":"Memoization","level":"1.3.4","depth":2,"path":"optimization/memoization.md","ref":"optimization/memoization.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"optimization/cache_affinity.md","mtime":"2017-05-08T15:52:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-08T15:53:37.771Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How To Optimize","level":"1.3.2","depth":2,"next":{"title":"Linearization","level":"1.3.3","depth":2,"path":"optimization/linearization.md","ref":"optimization/linearization.md","articles":[]},"previous":{"title":"Cache Affinity","level":"1.3.1","depth":2,"path":"optimization/cache_affinity.md","ref":"optimization/cache_affinity.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"optimization/how_to_optimize.md","mtime":"2017-05-08T15:52:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-08T15:53:37.771Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
