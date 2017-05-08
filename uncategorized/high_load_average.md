@@ -13,7 +13,7 @@ executed. This will result in an increase in latency: processes will
 respond or execute work more slowly than if they were on a less taxed
 system.
 
-Load average can be observed using `top`
+Load average can be observed using `top` or `uptime`
 
 ## With low CPU usage
 
@@ -27,7 +27,14 @@ per CPU, and thus load average is 1.
 If the load average is greater than the CPU utilization, there are other factors that
 are keeping the processe in the run queue that waiting for CPU:
 
-(TODO: fill in)
+### High Context Switch Count
+
+A high number of context switches will consume CPU, which must process
+the context switch befor executing work again.
+
+Context switches can be seen with `sar -w`
+
+https://www.ibm.com/support/knowledgecenter/en/ssw_aix_61/com.ibm.aix.performance/mode_switches.htm
 
 ## Useful commands:
 
