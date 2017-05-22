@@ -1,6 +1,7 @@
 # Testing
 
 - instability estimate of full-stack tests.
+- identify acceptance tests
 - testing pyramid
   - cost of a test
 - testing feedback loop
@@ -60,3 +61,16 @@ root cause becomes quicker to detect.
 
 Mean time to detect is helped with more monitoring, as the root cause
 is discovered quickly.
+
+# Measuring MTBF, and acceptance tests
+
+So with MTBF defined, what is a failure? Choose the definition you
+prefer, but a simple one would be "failure occurs when an acceptance
+criteria is no longer satisfied". Basically, if the end consumer has
+their core experience degraded significantly.
+
+To measure and detect this failure, acceptance tests, and monitors
+evaluating if acceptance criteria is satisfield, are needed.
+
+Thus, there should be an acceptance test and/or monitor for every core
+use case.

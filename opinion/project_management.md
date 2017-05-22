@@ -21,6 +21,9 @@ optimize, it's choosing which projects to invest time in.
 The lean startup and agile suggest defining the absolute bare minimum
 necessary to prove value of larger investments.
 
+* "good to great" notes that iterating faster is the only way to find your hedgehog faster
+* lean startup also pushes iteration
+
 ### Defining Small Projects
 
 #### Strip all Unnescessary Pieces
