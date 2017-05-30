@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Cache Affinity · GitBook</title>
+        <title>Code Organization Python · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="how_to_optimize.html" />
+    <link rel="next" href="project_management.html" />
     
     
 
@@ -114,9 +114,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../opinion/code_organization_python.html">
+        <li class="chapter active" data-level="1.2.1" data-path="code_organization_python.html">
             
-                <a href="../opinion/code_organization_python.html">
+                <a href="code_organization_python.html">
             
                     
                     Code Organization Python
@@ -127,9 +127,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../opinion/project_management.html">
+        <li class="chapter " data-level="1.2.2" data-path="project_management.html">
             
-                <a href="../opinion/project_management.html">
+                <a href="project_management.html">
             
                     
                     Project Management
@@ -140,9 +140,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="../opinion/webservice_cid_pattern.html">
+        <li class="chapter " data-level="1.2.3" data-path="webservice_cid_pattern.html">
             
-                <a href="../opinion/webservice_cid_pattern.html">
+                <a href="webservice_cid_pattern.html">
             
                     
                     Webservice Cid Pattern
@@ -172,9 +172,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.1" data-path="cache_affinity.html">
+        <li class="chapter " data-level="1.3.1" data-path="../optimization/cache_affinity.html">
             
-                <a href="cache_affinity.html">
+                <a href="../optimization/cache_affinity.html">
             
                     
                     Cache Affinity
@@ -185,9 +185,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="how_to_optimize.html">
+        <li class="chapter " data-level="1.3.2" data-path="../optimization/how_to_optimize.html">
             
-                <a href="how_to_optimize.html">
+                <a href="../optimization/how_to_optimize.html">
             
                     
                     How To Optimize
@@ -198,9 +198,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="linearization.html">
+        <li class="chapter " data-level="1.3.3" data-path="../optimization/linearization.html">
             
-                <a href="linearization.html">
+                <a href="../optimization/linearization.html">
             
                     
                     Linearization
@@ -211,9 +211,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="memoization.html">
+        <li class="chapter " data-level="1.3.4" data-path="../optimization/memoization.html">
             
-                <a href="memoization.html">
+                <a href="../optimization/memoization.html">
             
                     
                     Memoization
@@ -634,7 +634,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Cache Affinity</a>
+        <a href=".." >Code Organization Python</a>
     </h1>
 </div>
 
@@ -649,7 +649,59 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cache-affinity">Cache Affinity</h1>
+                                <h1 id="code-organization-in-python">Code Organization in Python</h1>
+<h2 id="big-flat-vs-small-tall">Big Flat vs Small Tall</h2>
+<p>When looking for something, whether it is in a code base or a larger
+library, the organization matters. A library system is a great example
+of a system that helps make discover easy; even with millions of potential
+entries, the tree itself is only 2 levels deep.</p>
+<p>There&apos;s a strong corallary with code: when attempting to find or if
+functionality, or find where it is located, a very large, flat index
+helps.</p>
+<p>Rule of thumb is to not make a hierarchy more than four levels deep:</p>
+<ul>
+<li><ol>
+<li>layer of abstraction (client / internal / datasource / core)</li>
+</ol>
+</li>
+<li><ol>
+<li>function</li>
+</ol>
+</li>
+<li><ol>
+<li>supporting functionality</li>
+</ol>
+</li>
+</ul>
+<p>This is typically enough to scale a codebase.</p>
+<h2 id="100-loc-per-module">~ 100 LOC per module</h2>
+<p>Python is already a concise language, so your module probably
+shouldn&apos;t baloon much anyway. But if they do, start to refactor
+your code into multiple functions, then move those into multiple modules.</p>
+<h3 id="refactoring-into-multiple-functions">Refactoring into multiple functions</h3>
+<p>A function often becomes bloated because it is attempting to manage
+too many low-level details in a single function. The
+<a href="https://refactoring.com/catalog/extractMethod.html" target="_blank">extract method</a>
+is a great pattern for this case: it ensures it&apos;s possible to keep
+context on what the function is doing, without including the detailed
+code itself.</p>
+<p>Extract method comes with another advantage: it helps clarify the
+code, because code that represents the behaviour you expect is clearly
+lableed and encapsulated.</p>
+<h2 id="put-the-main-function-at-the-top-subfunctions-in-first-seen-order">Put the main function at the top, subfunctions in first-seen order.</h2>
+<p>Many developers have learned to read code regardless of the
+organization, but wouldnt&apos;t it be great to read code like a well written essay? A well
+written essay has:</p>
+<ul>
+<li>high level context at the beginning</li>
+<li>introduces each concept in order of mention from the high level context.</li>
+</ul>
+<p>Putting the main functionality of the module at the top means the
+reader is presented with the most important information immediately:
+what this function does, and high-level instructions on how it&apos;s doing
+it. Putting the used subfunctions in order of first mention mean I can
+immediately follow along with the individual function flow, by reading
+top down. The low-level details are provided at the bottom.</p>
 
                                 
                                 </section>
@@ -678,7 +730,7 @@
             
                 
                 
-                <a href="how_to_optimize.html" class="navigation navigation-next navigation-unique" aria-label="Next page: How To Optimize">
+                <a href="project_management.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Project Management">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -689,7 +741,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cache Affinity","level":"1.3.1","depth":2,"next":{"title":"How To Optimize","level":"1.3.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},"previous":{"title":"Optimization","level":"1.3","depth":1,"ref":"","articles":[{"title":"Cache Affinity","level":"1.3.1","depth":2,"path":"optimization/cache_affinity.md","ref":"optimization/cache_affinity.md","articles":[]},{"title":"How To Optimize","level":"1.3.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},{"title":"Linearization","level":"1.3.3","depth":2,"path":"optimization/linearization.md","ref":"optimization/linearization.md","articles":[]},{"title":"Memoization","level":"1.3.4","depth":2,"path":"optimization/memoization.md","ref":"optimization/memoization.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"optimization/cache_affinity.md","mtime":"2017-05-08T15:53:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-30T05:07:30.230Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Code Organization Python","level":"1.2.1","depth":2,"next":{"title":"Project Management","level":"1.2.2","depth":2,"path":"opinion/project_management.md","ref":"opinion/project_management.md","articles":[]},"previous":{"title":"Opinion","level":"1.2","depth":1,"ref":"","articles":[{"title":"Code Organization Python","level":"1.2.1","depth":2,"path":"opinion/code_organization_python.md","ref":"opinion/code_organization_python.md","articles":[]},{"title":"Project Management","level":"1.2.2","depth":2,"path":"opinion/project_management.md","ref":"opinion/project_management.md","articles":[]},{"title":"Webservice Cid Pattern","level":"1.2.3","depth":2,"path":"opinion/webservice_cid_pattern.md","ref":"opinion/webservice_cid_pattern.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"opinion/code_organization_python.md","mtime":"2017-05-22T02:02:55.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-30T05:07:30.230Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

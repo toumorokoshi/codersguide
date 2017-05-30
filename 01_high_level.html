@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>CONTRIBUTING · GitBook</title>
+        <title>01 High Level · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="notes.html" />
+    <link rel="next" href="CONTRIBUTING.html" />
     
     
-    <link rel="prev" href="01_high_level.html" />
+    <link rel="prev" href="z_sandbox/ui.html" />
     
 
     </head>
@@ -567,7 +567,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="01_high_level.html">
+        <li class="chapter active" data-level="1.8" data-path="01_high_level.html">
             
                 <a href="01_high_level.html">
             
@@ -580,7 +580,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9" data-path="CONTRIBUTING.html">
+        <li class="chapter " data-level="1.9" data-path="CONTRIBUTING.html">
             
                 <a href="CONTRIBUTING.html">
             
@@ -636,7 +636,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >CONTRIBUTING</a>
+        <a href="." >01 High Level</a>
     </h1>
 </div>
 
@@ -651,16 +651,145 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="building-it-yourself">building it yourself</h1>
-<p><a href="https://github.com/GitbookIO/gitbook" target="_blank">https://github.com/GitbookIO/gitbook</a> is used for publishing. You can
-read more about it, or just run:</p>
-<pre><code>npm install -g gitbook
-gitbook serve .
-</code></pre><h1 id="license">License</h1>
-<p>By submitting a pull request to this repository, you are agreeing to
-transfer all rights to the content with the pull request to Yusuke Tsutsumi.</p>
-<p>I&apos;m not sure what the licensing for this book is yet, so I need to be
-restrictive. Really it&apos;s recommended to just wait on it for now.</p>
+                                <h1 id="high-level-the-1000-foot-view-on-software-engineering">High Level: The 1000 foot view on software engineering</h1>
+<!-- TODO: link -->
+<h1 id="the-ultimate-goal-of-software-is-to-provide-value">The ultimate goal of software is to provide value</h1>
+<p>The most efficient software teams are those that provide the most
+value to the customer. There are three core KPIs for providing user
+value:</p>
+<h2 id="choosing-the-right-projects">Choosing the right projects</h2>
+<p>1/3rd of projects measured against a KPI actually improved the KPI
+when release. Based on that study, 2/3rds of projects executed do not
+have the desired effect, and may not have any effect. Thus, choosing the
+right project to deliver is important.</p>
+<h2 id="mean-time-to-delivery-of-functionality">Mean Time To Delivery of Functionality</h2>
+<p>Mean time to delivery is the amoutn of time it takes to deliver
+functionality. It would be best to measure it as the amount of time
+from when work is started on the task, to when it is delivered.</p>
+<p>Measuring from time when it is requested is a fallacy, as the amount
+of work your team has in the queue can impact this. Time in queue (and
+value of projects in queue) is a better KPI for whether more resources
+should be allocated to the team.</p>
+<h2 id="mean-availability">Mean Availability</h2>
+<p>In this case, availability is defined as the total amount of time your
+software is providing value to your users, vs the total amount of time
+that value is desired. If there is a point in time where a user wants
+to extract value (e.g. use your application), and your software is
+unavailable or unable to provide that value, that negatively impacts
+this KPI.</p>
+<h1 id="improving-project-choice">Improving Project Choice</h1>
+<p>See the Lean Startup.</p>
+<h1 id="improving-the-pipeline-and-ensure-high-mean-availability">Improving the Pipeline, and ensure high mean availability</h1>
+<p>Assuming optimal project choice, the next item to optimize is the
+delivery of software.</p>
+<ul>
+<li>Project Begins</li>
+<li>Write Code</li>
+<li>?</li>
+<li>Project Delivered</li>
+</ul>
+<p>In order to measure if the project delivery was
+successful, it&apos;s important to define the project to a point that
+acceptance criteria can be outlined about the functonality and
+availability of the project.</p>
+<p>We&apos;ll define a project as delivered when:</p>
+<ul>
+<li>all acceptance criteria has been met</li>
+<li>the project is available to all desired customers</li>
+</ul>
+<p>The delivery of code to customers is typically called deploy:</p>
+<ul>
+<li>Project Begins</li>
+<li>Write Code</li>
+<li>?</li>
+<li>Project Satisfies Acceptance Criteria</li>
+<li>Deploy</li>
+<li>Project Delivered</li>
+</ul>
+<p>To ensure that mean availability remains high, the acceptance criteria
+must be validated BEFORE the deploy. To ensure this, there must be a
+comprehensive execution of acceptance tests performed:</p>
+<ul>
+<li>Project Begins</li>
+<li>Write Code</li>
+<li>?</li>
+<li>Run Acceptance Tests</li>
+<li>Deploy</li>
+<li>Projects Delivered</li>
+</ul>
+<p>At this point, the pipeline could be considered
+complete. Unfortunately, it is often the case that code does not pass
+all acceptance criteria upon Write. Thus, the cycle looks something like:</p>
+<ol>
+<li>Write Code</li>
+<li>Run Acceptance Tests</li>
+<li>Failed, Write Code</li>
+<li>Run Acceptance Tests</li>
+<li>Failed, Write Code</li>
+<li>Run Acceptance Tests</li>
+<li>Deploy</li>
+</ol>
+<p>Thus, the speed of the pre-deploy cycle is significantly more
+important than the speed of the deploy itself. Acceptance criteria
+tends to require full test environments or more test fixtures, and
+there are much cheaper alternatives, like unit testing. Thus, it makes
+sense to introduce unit testing as a much cheaper way of providing
+feedback:</p>
+<ol>
+<li>Write Code</li>
+<li>Run Unit Tests</li>
+<li>Failed, Write Code</li>
+<li>Run Unit Tests</li>
+<li>Run Acceptance Tests</li>
+<li>Failed, Write Code</li>
+<li>Run Unit Tests</li>
+<li>Run Acceptance Tests</li>
+<li>Deploy</li>
+</ol>
+<p>If we assume that we saved even a single acceptance test run by a unit test, then you break even when:</p>
+<pre><code>acceptance_time * num_times &gt; acceptance_time * (num_times - 1) + unit_time * num_times
+acceptance_time &gt; unit_time * num_times
+acceptance_time / num_times &gt; unit_time
+</code></pre><p>So, if your average pass includes running 5 acceptance passes, then
+you will save time if your unit tests take 1 / 5th of acceptance time.</p>
+<p>In practice, you save many times that amount, as one iterates rapidly
+on unit tests, and ends with a single execution or two of acceptance
+tests. If we assume:</p>
+<ul>
+<li>acceptance_time = 10 (min)</li>
+<li>unit_time = 1 (min)</li>
+<li>num_times = 5</li>
+</ul>
+<p>Then the time savings is:</p>
+<pre><code>with only acceptance: 5 * 10 = 50 minutes
+with unit tests, 1 failed acceptance run: 2 * 10 + 5 * 1 = 25 minutes
+with unit tests, 0 failed acceptance run: 2 * 10 + 5 * 1 = 15 minutes
+</code></pre><p>The savings on the pipeline is over 50 percent! In practice, unit
+tests are much, much faster than acceptance tests, and the iteration
+cycle can be far more than 5 times, so higher yields are not unusual.</p>
+<p>Thus, a bare-minimum software delivery pipeline looks like:</p>
+<ol>
+<li>Write Code</li>
+<li>Run Unit Tests</li>
+<li>Run Acceptance Tests</li>
+<li>Deploy</li>
+</ol>
+<p>Making this loop more efficient is a matter of seeing where tooling or
+practices can be applied to provide an objective improvement. This is
+a kind of product design of it&apos;s own, and could benefit from the lean
+startup assumption validation framework.</p>
+<p>A common pattern comes in automation: a majority of this pipeline can
+be automated:</p>
+<ol>
+<li>Write Code</li>
+<li>(Automated) Run Unit Tests</li>
+<li>(Automated) Run Acceptance Test</li>
+<li>(Automated) Deploy</li>
+</ol>
+<p>The goal is to ensure that developers are dedicating as much time as
+possible to creating value. This is done by meticulously identifying
+automatable tasks, and automating them.</p>
+<p>This basically amounts to the philosophies of continous delivery.</p>
 
                                 
                                 </section>
@@ -688,12 +817,12 @@ restrictive. Really it&apos;s recommended to just wait on it for now.</p>
 
             
                 
-                <a href="01_high_level.html" class="navigation navigation-prev " aria-label="Previous page: 01 High Level">
+                <a href="z_sandbox/ui.html" class="navigation navigation-prev " aria-label="Previous page: Ui">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="notes.html" class="navigation navigation-next " aria-label="Next page: Notes">
+                <a href="CONTRIBUTING.html" class="navigation navigation-next " aria-label="Next page: CONTRIBUTING">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -704,7 +833,7 @@ restrictive. Really it&apos;s recommended to just wait on it for now.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CONTRIBUTING","level":"1.9","depth":1,"next":{"title":"Notes","level":"1.10","depth":1,"path":"notes.md","ref":"notes.md","articles":[]},"previous":{"title":"01 High Level","level":"1.8","depth":1,"path":"01_high_level.md","ref":"01_high_level.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"CONTRIBUTING.md","mtime":"2017-05-08T15:53:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-30T05:07:30.230Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"01 High Level","level":"1.8","depth":1,"next":{"title":"CONTRIBUTING","level":"1.9","depth":1,"path":"CONTRIBUTING.md","ref":"CONTRIBUTING.md","articles":[]},"previous":{"title":"Ui","level":"1.7.9","depth":2,"path":"z_sandbox/ui.md","ref":"z_sandbox/ui.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"01_high_level.md","mtime":"2017-05-22T04:30:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-30T05:07:30.230Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

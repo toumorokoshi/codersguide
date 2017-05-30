@@ -114,12 +114,38 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="../opinion/project_management.html">
+        <li class="chapter " data-level="1.2.1" data-path="../opinion/code_organization_python.html">
+            
+                <a href="../opinion/code_organization_python.html">
+            
+                    
+                    Code Organization Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../opinion/project_management.html">
             
                 <a href="../opinion/project_management.html">
             
                     
                     Project Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../opinion/webservice_cid_pattern.html">
+            
+                <a href="../opinion/webservice_cid_pattern.html">
+            
+                    
+                    Webservice Cid Pattern
             
                 </a>
             
@@ -226,6 +252,25 @@
                 </span>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="unit_testing.html">
+            
+                <a href="unit_testing.html">
+            
+                    
+                    Unit Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -520,7 +565,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="../CONTRIBUTING.html">
+        <li class="chapter " data-level="1.8" data-path="../01_high_level.html">
+            
+                <a href="../01_high_level.html">
+            
+                    
+                    01 High Level
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../CONTRIBUTING.html">
             
                 <a href="../CONTRIBUTING.html">
             
@@ -533,7 +591,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../notes.html">
+        <li class="chapter " data-level="1.10" data-path="../notes.html">
             
                 <a href="../notes.html">
             
@@ -594,6 +652,7 @@
                                 <h1 id="testing">Testing</h1>
 <ul>
 <li>instability estimate of full-stack tests.</li>
+<li>identify acceptance tests</li>
 <li>testing pyramid<ul>
 <li>cost of a test</li>
 </ul>
@@ -639,6 +698,15 @@ root cause becomes quicker to detect.</p>
 <h2 id="mttd">MTTD</h2>
 <p>Mean time to detect is helped with more monitoring, as the root cause
 is discovered quickly.</p>
+<h1 id="measuring-mtbf-and-acceptance-tests">Measuring MTBF, and acceptance tests</h1>
+<p>So with MTBF defined, what is a failure? Choose the definition you
+prefer, but a simple one would be &quot;failure occurs when an acceptance
+criteria is no longer satisfied&quot;. Basically, if the end consumer has
+their core experience degraded significantly.</p>
+<p>To measure and detect this failure, acceptance tests, and monitors
+evaluating if acceptance criteria is satisfield, are needed.</p>
+<p>Thus, there should be an acceptance test and/or monitor for every core
+use case.</p>
 
                                 
                                 </section>
@@ -678,7 +746,7 @@ is discovered quickly.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Testing","level":"1.4","depth":1,"next":{"title":"Testing","level":"1.5","depth":1,"ref":"","articles":[]},"previous":{"title":"Memoization","level":"1.3.4","depth":2,"path":"optimization/memoization.md","ref":"optimization/memoization.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"testing/testing.md","mtime":"2017-05-08T15:52:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-08T15:53:37.771Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Testing","level":"1.4","depth":1,"next":{"title":"Testing","level":"1.5","depth":1,"ref":"","articles":[{"title":"Unit Testing","level":"1.5.1","depth":2,"path":"testing/unit_testing.md","ref":"testing/unit_testing.md","articles":[]}]},"previous":{"title":"Memoization","level":"1.3.4","depth":2,"path":"optimization/memoization.md","ref":"optimization/memoization.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"testing/testing.md","mtime":"2017-05-09T16:04:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-30T05:07:30.230Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
