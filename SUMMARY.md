@@ -1,7 +1,9 @@
 # Your Book Name
 
 - Opinion
+  * [Code Organization Python](opinion/code_organization_python.md)
   * [Project Management](opinion/project_management.md)
+  * [Webservice Cid Pattern](opinion/webservice_cid_pattern.md)
 - Optimization
   * [Cache Affinity](optimization/cache_affinity.md)
   * [How To Optimize](optimization/how_to_optimize.md)
@@ -9,6 +11,7 @@
   * [Memoization](optimization/memoization.md)
 - [Testing](testing/testing.md)
 - Testing
+  * [Unit Testing](testing/unit_testing.md)
 - Uncategorized
   * [Context Switches](uncategorized/context_switches.md)
   * [Debugging Applications](uncategorized/debugging_applications.md)
@@ -30,5 +33,6 @@
   * [Keep Tests Small](z_sandbox/keep_tests_small.md)
   * [Risk](z_sandbox/risk.md)
   * [Ui](z_sandbox/ui.md)
+* [01 High Level](01_high_level.md)
 * [CONTRIBUTING](CONTRIBUTING.md)
 * [Notes](notes.md)
