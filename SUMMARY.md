@@ -4,6 +4,7 @@
   * [Code Organization Python](opinion/code_organization_python.md)
   * [Project Management](opinion/project_management.md)
   * [Webservice Cid Pattern](opinion/webservice_cid_pattern.md)
+  * [Work](opinion/work.md)
 - Optimization
   * [Cache Affinity](optimization/cache_affinity.md)
   * [How To Optimize](optimization/how_to_optimize.md)
