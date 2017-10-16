@@ -1,6 +1,13 @@
 # Your Book Name
 
+- [Monitoring](monitoring/monitoring.md)
+- Monitoring
+  * [Histogram No P 99](monitoring/histogram_no_p99.md)
+  * [Sandbox 2](monitoring/sandbox_2.md)
+  * [Sandbox](monitoring/sandbox.md)
+  * [Severity By Pain](monitoring/severity_by_pain.md)
 - Opinion
+  * [Cid Example](opinion/cid_example.md)
   * [Code Organization Python](opinion/code_organization_python.md)
   * [Project Management](opinion/project_management.md)
   * [Webservice Cid Pattern](opinion/webservice_cid_pattern.md)
