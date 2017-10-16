@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Cache Affinity · GitBook</title>
+        <title>Cid Example · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="how_to_optimize.html" />
+    <link rel="next" href="code_organization_python.html" />
     
     
 
@@ -198,9 +198,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../opinion/cid_example.html">
+        <li class="chapter active" data-level="1.4.1" data-path="cid_example.html">
             
-                <a href="../opinion/cid_example.html">
+                <a href="cid_example.html">
             
                     
                     Cid Example
@@ -211,9 +211,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../opinion/code_organization_python.html">
+        <li class="chapter " data-level="1.4.2" data-path="code_organization_python.html">
             
-                <a href="../opinion/code_organization_python.html">
+                <a href="code_organization_python.html">
             
                     
                     Code Organization Python
@@ -224,9 +224,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="../opinion/project_management.html">
+        <li class="chapter " data-level="1.4.3" data-path="project_management.html">
             
-                <a href="../opinion/project_management.html">
+                <a href="project_management.html">
             
                     
                     Project Management
@@ -237,9 +237,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="../opinion/webservice_cid_pattern.html">
+        <li class="chapter " data-level="1.4.4" data-path="webservice_cid_pattern.html">
             
-                <a href="../opinion/webservice_cid_pattern.html">
+                <a href="webservice_cid_pattern.html">
             
                     
                     Webservice Cid Pattern
@@ -250,9 +250,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="../opinion/work.html">
+        <li class="chapter " data-level="1.4.5" data-path="work.html">
             
-                <a href="../opinion/work.html">
+                <a href="work.html">
             
                     
                     Work
@@ -282,9 +282,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1" data-path="cache_affinity.html">
+        <li class="chapter " data-level="1.5.1" data-path="../optimization/cache_affinity.html">
             
-                <a href="cache_affinity.html">
+                <a href="../optimization/cache_affinity.html">
             
                     
                     Cache Affinity
@@ -295,9 +295,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="how_to_optimize.html">
+        <li class="chapter " data-level="1.5.2" data-path="../optimization/how_to_optimize.html">
             
-                <a href="how_to_optimize.html">
+                <a href="../optimization/how_to_optimize.html">
             
                     
                     How To Optimize
@@ -308,9 +308,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="linearization.html">
+        <li class="chapter " data-level="1.5.3" data-path="../optimization/linearization.html">
             
-                <a href="linearization.html">
+                <a href="../optimization/linearization.html">
             
                     
                     Linearization
@@ -321,9 +321,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="memoization.html">
+        <li class="chapter " data-level="1.5.4" data-path="../optimization/memoization.html">
             
-                <a href="memoization.html">
+                <a href="../optimization/memoization.html">
             
                     
                     Memoization
@@ -744,7 +744,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Cache Affinity</a>
+        <a href=".." >Cid Example</a>
     </h1>
 </div>
 
@@ -759,7 +759,33 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cache-affinity">Cache Affinity</h1>
+                                <p>An example of CID in python looks something like:</p>
+<ul>
+<li><app_module_name>/<ul>
+<li>routes/<ul>
+<li>user.py</li>
+</ul>
+</li>
+<li>lib/<ul>
+<li>user.py</li>
+</ul>
+</li>
+<li>clients/<ul>
+<li>user.py</li>
+</ul>
+</li>
+</ul>
+</app_module_name></li>
+</ul>
+<h2 id="routesuserpy">routes/user.py</h2>
+<p>The routes methods should be very light.</p>
+<p>the code in routes should just be wrappers of functionality in the lib/ module. the code in routes should handle:</p>
+<ul>
+<li>deserialization of logic</li>
+<li>any further validation necessary</li>
+<li>converting format to work with lib/ directory.</li>
+</ul>
+<p>That way, no one has to reach out to routes/ to use functionality: they just call the appropriate lib/ method instead.</p>
 
                                 
                                 </section>
@@ -788,7 +814,7 @@
             
                 
                 
-                <a href="how_to_optimize.html" class="navigation navigation-next navigation-unique" aria-label="Next page: How To Optimize">
+                <a href="code_organization_python.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Code Organization Python">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -799,7 +825,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cache Affinity","level":"1.5.1","depth":2,"next":{"title":"How To Optimize","level":"1.5.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},"previous":{"title":"Optimization","level":"1.5","depth":1,"ref":"","articles":[{"title":"Cache Affinity","level":"1.5.1","depth":2,"path":"optimization/cache_affinity.md","ref":"optimization/cache_affinity.md","articles":[]},{"title":"How To Optimize","level":"1.5.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},{"title":"Linearization","level":"1.5.3","depth":2,"path":"optimization/linearization.md","ref":"optimization/linearization.md","articles":[]},{"title":"Memoization","level":"1.5.4","depth":2,"path":"optimization/memoization.md","ref":"optimization/memoization.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"optimization/cache_affinity.md","mtime":"2017-07-28T05:27:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-16T22:29:22.424Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Cid Example","level":"1.4.1","depth":2,"next":{"title":"Code Organization Python","level":"1.4.2","depth":2,"path":"opinion/code_organization_python.md","ref":"opinion/code_organization_python.md","articles":[]},"previous":{"title":"Opinion","level":"1.4","depth":1,"ref":"","articles":[{"title":"Cid Example","level":"1.4.1","depth":2,"path":"opinion/cid_example.md","ref":"opinion/cid_example.md","articles":[]},{"title":"Code Organization Python","level":"1.4.2","depth":2,"path":"opinion/code_organization_python.md","ref":"opinion/code_organization_python.md","articles":[]},{"title":"Project Management","level":"1.4.3","depth":2,"path":"opinion/project_management.md","ref":"opinion/project_management.md","articles":[]},{"title":"Webservice Cid Pattern","level":"1.4.4","depth":2,"path":"opinion/webservice_cid_pattern.md","ref":"opinion/webservice_cid_pattern.md","articles":[]},{"title":"Work","level":"1.4.5","depth":2,"path":"opinion/work.md","ref":"opinion/work.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"opinion/cid_example.md","mtime":"2017-10-06T20:23:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-16T22:29:22.424Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

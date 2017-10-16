@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Cache Affinity · GitBook</title>
+        <title>Sandbox 2 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="how_to_optimize.html" />
+    <link rel="next" href="sandbox.html" />
     
+    
+    <link rel="prev" href="histogram_no_p99.html" />
     
 
     </head>
@@ -100,9 +102,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../monitoring/monitoring.html">
+        <li class="chapter " data-level="1.2" data-path="monitoring.html">
             
-                <a href="../monitoring/monitoring.html">
+                <a href="monitoring.html">
             
                     
                     Monitoring
@@ -127,9 +129,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../monitoring/histogram_no_p99.html">
+        <li class="chapter " data-level="1.3.1" data-path="histogram_no_p99.html">
             
-                <a href="../monitoring/histogram_no_p99.html">
+                <a href="histogram_no_p99.html">
             
                     
                     Histogram No P 99
@@ -140,9 +142,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../monitoring/sandbox_2.html">
+        <li class="chapter active" data-level="1.3.2" data-path="sandbox_2.html">
             
-                <a href="../monitoring/sandbox_2.html">
+                <a href="sandbox_2.html">
             
                     
                     Sandbox 2
@@ -153,9 +155,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../monitoring/sandbox.html">
+        <li class="chapter " data-level="1.3.3" data-path="sandbox.html">
             
-                <a href="../monitoring/sandbox.html">
+                <a href="sandbox.html">
             
                     
                     Sandbox
@@ -166,9 +168,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="../monitoring/severity_by_pain.html">
+        <li class="chapter " data-level="1.3.4" data-path="severity_by_pain.html">
             
-                <a href="../monitoring/severity_by_pain.html">
+                <a href="severity_by_pain.html">
             
                     
                     Severity By Pain
@@ -282,9 +284,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1" data-path="cache_affinity.html">
+        <li class="chapter " data-level="1.5.1" data-path="../optimization/cache_affinity.html">
             
-                <a href="cache_affinity.html">
+                <a href="../optimization/cache_affinity.html">
             
                     
                     Cache Affinity
@@ -295,9 +297,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="how_to_optimize.html">
+        <li class="chapter " data-level="1.5.2" data-path="../optimization/how_to_optimize.html">
             
-                <a href="how_to_optimize.html">
+                <a href="../optimization/how_to_optimize.html">
             
                     
                     How To Optimize
@@ -308,9 +310,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="linearization.html">
+        <li class="chapter " data-level="1.5.3" data-path="../optimization/linearization.html">
             
-                <a href="linearization.html">
+                <a href="../optimization/linearization.html">
             
                     
                     Linearization
@@ -321,9 +323,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="memoization.html">
+        <li class="chapter " data-level="1.5.4" data-path="../optimization/memoization.html">
             
-                <a href="memoization.html">
+                <a href="../optimization/memoization.html">
             
                     
                     Memoization
@@ -744,7 +746,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Cache Affinity</a>
+        <a href=".." >Sandbox 2</a>
     </h1>
 </div>
 
@@ -759,7 +761,115 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="cache-affinity">Cache Affinity</h1>
+                                <h1 id="a-top-down-philosophy-on-alerting">A top-down philosophy on alerting</h1>
+<h2 id="what-is-an-alert-and-what-is-it-good-for">What is an alert, and what is it good for?</h2>
+<p>Alerts are a way to be notified automatically of a situation that requires human action. Alerts are composed of:</p>
+<ul>
+<li>a monitor: a way to observe data that could signify the need for human intervention</li>
+<li>a criteria: a way to analyst the data to determine if human intervention is needed</li>
+</ul>
+<h1 id="when-is-human-judgement-necessary">When is human judgement necessary?</h1>
+<h2 id="when-theres-a-massive-change-in-service-behavior">When there&apos;s a massive change in service behavior?</h2>
+<p>A change in service behavior could signify either a system behaving incorrectly,
+or a system that is now experiencing an abnormal situation.</p>
+<p>Abnormal situations could become the new normal with little fanfare. But,
+abnormal situations might require human intervention to handle as well (e.g.
+  someone increases load 10x)</p>
+<p>If a system is architected in such a way that it can scale with load, then
+it just becomes a matter of scaling relative to the demands of the service.
+scaling hardware becomes a matter of cost. The ultimate decision maker should
+be the person responsible for deciding if the budget of the system is reasonable or not.</p>
+<p>200 counts are only a problem if the usage is &quot;too high.&quot; What is too high?</p>
+<ul>
+<li>the system becomes close to approaching a cliff (eventual resolution)</li>
+<li>the system is too costly (eventual resolution)</li>
+<li>the system is falling off a cliff (immediate resolution)</li>
+</ul>
+<h2 id="alert-priorities">Alert Priorities</h2>
+<p>There are three major priorities to alerts:</p>
+<ul>
+<li>alerts that must be investigated now</li>
+<li>alerts that must be investigated soon</li>
+<li>alerts that must be investigated eventually</li>
+</ul>
+<p>In either situation, they must be investigated. The alerts
+that need to be investigated in the future could be batched and investigated separately.</p>
+<h3 id="alerts-that-need-to-be-investigated-now">Alerts that need to be investigated now</h3>
+<p>AKA: Excuse me from the dinner table</p>
+<p>Notification Strategy: Page</p>
+<ul>
+<li>user impact below SLA</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>system unavailable</li>
+</ul>
+<h3 id="alerts-that-must-be-investigated-soon">Alerts that must be investigated soon</h3>
+<p>AKA: I&apos;ll look after dinner</p>
+<p>Notification Strategy:</p>
+<ul>
+<li>Page during business hours</li>
+<li><p>Page lower priority off-hours (with specification that this is a &quot;soon&quot;)</p>
+</li>
+<li><p>likely user impact impending</p>
+</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>host down?</li>
+</ul>
+<h4 id="why-should-we-differentiate-between-this-and-now">Why should we differentiate between this and &quot;now&quot;?</h4>
+<p>Because soon and now are a huge quality of life difference. This is a human comfort threshold more than it is a threshold about system operations.</p>
+<h3 id="alerts-that-must-be-investigated-eventually">Alerts that must be investigated eventually</h3>
+<p>AKA: I&apos;ll look at it on Monday</p>
+<p>Notification Strategy: E-mail, or no notification. Separate dashboard</p>
+<p>Could be batches together for a single investigation with others, saving time from context switching.</p>
+<ul>
+<li>no likely user impact, or minimal user impact</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>single 500s error</li>
+<li>high 200s</li>
+</ul>
+<h2 id="who-should-investigate-these-alerts">Who should investigate these alerts?</h2>
+<p>Each of these categories require investigation. The question is who.</p>
+<p>For Now + Soon, we need fast responses. Fast responses can cause significant fatigue,
+ so it&apos;s important to share the burden on these. So, on-call rotation</p>
+<p>For eventually, we&apos;re talking about someone looks at the situation periodically,
+and makes judgements based off of that. We could assign it to a single person responsible for quality, or share that burden as well.</p>
+<h2 id="alert-types">Alert Types</h2>
+<h3 id="business-sla">Business SLA</h3>
+<p>A business SLA reflects a critical business metric. A degradation before</p>
+<h2 id="achieving-strong-alert-signal">Achieving Strong Alert Signal</h2>
+<h2 id="questions">Questions</h2>
+<h3 id="should-alerting-be-the-same-alert-on-a-continuum-or-multiple-static-alerts">Should alerting be the same alert on a continuum, or multiple static alerts?</h3>
+<p>An monitor could emit one of the three severities (now, soon, eventually)</p>
+<p>now: 10+ 500s
+soon: 3+ 500s
+eventually: 1+ 500s
+never: pass or green?</p>
+<p>An alert could implement only one of the three.</p>
+<h3 id="how-to-visualize-the-different-alert-categories">How to visualize the different alert categories?</h3>
+<h3 id="should-alerts-be-in-code-should-they-follow-the-service">Should alerts be in code? Should they follow the service?</h3>
+<p>Alerts following the service has been really valuable, because the service changes. The alerts following the service that changes makes a lot of sense.</p>
+<p>But there are also alerts that have to do with the environment the service is a part of:</p>
+<ul>
+<li>traffic</li>
+<li>total cpu</li>
+<li>total memory</li>
+</ul>
+<p>These alerts should be quickly tunable, or live with a separate system that determines the user traffic.</p>
+<p>^ Dynamic loading from config-values for faster action?
+^ temporary override?</p>
+<h3 id="its-lame-that-we-have-to-ship-a-service-to-make-a-monitor-change">It&apos;s lame that we have to ship a service to make a monitor change.</h3>
+<p>Monitors should live with the service, but we shouldn&apos;t have to ship the whole thing to make a change.</p>
+<p>We should probably allow temporary changes</p>
+<h3 id="validation-for-promotion-and-alerting-in-production-are-fundamentally-different">Validation for promotion and alerting in production are fundamentally different?</h3>
+<p>validation for promotion: everything is working.
+alerting in production: response is variable depending on severity.</p>
+<h2 id="links">Links</h2>
+<p><a href="https://www.datadoghq.com/blog/monitoring-101-alerting/" target="_blank">https://www.datadoghq.com/blog/monitoring-101-alerting/</a></p>
 
                                 
                                 </section>
@@ -787,8 +897,12 @@
 
             
                 
+                <a href="histogram_no_p99.html" class="navigation navigation-prev " aria-label="Previous page: Histogram No P 99">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="how_to_optimize.html" class="navigation navigation-next navigation-unique" aria-label="Next page: How To Optimize">
+                
+                <a href="sandbox.html" class="navigation navigation-next " aria-label="Next page: Sandbox">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -799,7 +913,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Cache Affinity","level":"1.5.1","depth":2,"next":{"title":"How To Optimize","level":"1.5.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},"previous":{"title":"Optimization","level":"1.5","depth":1,"ref":"","articles":[{"title":"Cache Affinity","level":"1.5.1","depth":2,"path":"optimization/cache_affinity.md","ref":"optimization/cache_affinity.md","articles":[]},{"title":"How To Optimize","level":"1.5.2","depth":2,"path":"optimization/how_to_optimize.md","ref":"optimization/how_to_optimize.md","articles":[]},{"title":"Linearization","level":"1.5.3","depth":2,"path":"optimization/linearization.md","ref":"optimization/linearization.md","articles":[]},{"title":"Memoization","level":"1.5.4","depth":2,"path":"optimization/memoization.md","ref":"optimization/memoization.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"optimization/cache_affinity.md","mtime":"2017-07-28T05:27:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-16T22:29:22.424Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sandbox 2","level":"1.3.2","depth":2,"next":{"title":"Sandbox","level":"1.3.3","depth":2,"path":"monitoring/sandbox.md","ref":"monitoring/sandbox.md","articles":[]},"previous":{"title":"Histogram No P 99","level":"1.3.1","depth":2,"path":"monitoring/histogram_no_p99.md","ref":"monitoring/histogram_no_p99.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Yusuke Tsutsumi","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"monitoring/sandbox_2.md","mtime":"2017-10-15T03:56:44.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-10-16T22:29:22.424Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
