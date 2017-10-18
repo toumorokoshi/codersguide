@@ -77,9 +77,21 @@ STL decomposition splits a metric into three separate graphs
 * trend: a larger overall trend of the meric itself
 * residue: the leftovers
 
+## Mixed Metrics?
+
+Maybe latency alone isn't good. Maybe it's some combined threshold of payload_size + latency? Or some better way to understand the expected response of the code?
+
+## Saturation as the end-all Metric?
+
+For now, saturation may be the only relevant metric, or the most important one. Saturation means shit is hitting the fan, or we are failing to respond to requests. That's time to wake someone up.
+
 
 ## Random
 
 Produce a system that analyzes the metric after an initial influx of data (10 days?) and then uses that to make an educates guess regarding anomalies.
 
 The user selectst the anomalies, and the best algorithm choice that captures that anomaly is selected?
+
+https://blog.netsil.com/microservices-devops-and-operational-complexity-be98cb01b660
+https://blog.netsil.com/the-4-golden-signals-of-api-health-and-performance-in-cloud-native-applications-a6e87526e74
+https://sysadvent.blogspot.com/2016/12/day-6-no-more-on-call-martyrs.html
