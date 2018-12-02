@@ -5,6 +5,8 @@ gitbook build
 rm -r /tmp/_book/
 mv _book /tmp/_book
 git checkout gh-pages
+git fetch origin gh-pages
+git reset --hard origin/gh-pages
 rm -r *
 mv /tmp/_book/* .
 git add .
